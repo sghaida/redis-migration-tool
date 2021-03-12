@@ -55,6 +55,10 @@ func NewWorkerPool(src, dst string, commands <-chan string) *WorkerPool {
 func (w *WorkerPool) Importer(id int, keys <-chan string, ttl int) {
 	src := w.srcPool.Get()
 	dst := w.dstPool.Get()
+	defer func() {
+		_ = src.Close()
+		_ = dst.Close()
+	}()
 
 	for key := range keys {
 		keysToMigrate, _ := redis.Strings(src.Do("KEYS", key))
