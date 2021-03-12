@@ -10,5 +10,5 @@ I need this specifically for lists but it can work with anything with minor chan
 to execute the migration please follow the following example commandline
 
 ```shell
-go run cmd.go -src="src-host:src-port" -dst="dst-host:dst-port" -key="*key-pattern*" -ttl=3600
+go run main.go -src="src-host:src-port" -dst="dst-host:dst-port" -key="*key-pattern*" -ttl=3600
 ```
